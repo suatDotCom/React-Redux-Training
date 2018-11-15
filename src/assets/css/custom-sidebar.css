@@ -1,0 +1,33 @@
+.custom-sidebar {
+
+  opacity: 0.7 ;
+  margin-top: 120px;
+}
+
+.custom-sidebar .sidebar-header {
+    background-image: url('../img/sidebarHeader.png');
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: top left -10px;
+    width: 75%;
+    height: 95px;
+}
+
+.custom-sidebar .sidebar-content {
+    background-image: url('../img/sidebarContent.png');
+    background-repeat: repeat-y;
+    /* background-size: cover; */
+    background-position: top left;
+    width: 75%;
+    height: 60vh;
+    padding:5rem;
+}
+
+.custom-sidebar .sidebar-footer {
+    background-image: url('../img/sidebarFooter.png');
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: top left;
+    width: 75%;
+    height: 65px
+}
