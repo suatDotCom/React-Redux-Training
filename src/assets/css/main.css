@@ -9,6 +9,10 @@ html * {
   text-transform: uppercase;
 }
 
+.main-panel {
+  margin-top:200px;
+}
+
 .shine-effect {
   z-index: 9999;
   pointer-events: none;
@@ -446,6 +450,27 @@ input[type="password"] {
   background: transparent;
   font-family: "Rajdhani !important";
   color: #2fd9fc;
+}
+
+.error-text {
+  color:red;
+}
+
+.error-input {
+  height: 50px;
+  border: 1px solid red !important;
+  padding: 0 10px;
+  background: transparent;
+  font-family: "Rajdhani !important";
+  color: #fff;
+}
+
+.error-input:focus {
+  height: 50px;
+  border: 1px solid red !important;
+  padding: 0 10px;
+  background: red !important;
+  font-family: "Rajdhani !important";
 }
 .scifiUI input[type="text"]:hover,
 input[type="password"]:hover {

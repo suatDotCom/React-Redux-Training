@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "arwes": "^1.0.0-alpha.5",
+    "axios": "^0.18.0",
     "concurrently": "^4.0.1",
     "connected-react-router": "^4.2.3",
     "history": "^4.7.2",

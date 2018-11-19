@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Routes from "./routes";
+import { Provider } from "react-redux";
 
+import Routes from "./routes/mainRoutes.js";
+
+import "./assets/css/main.css";
 import {
   ThemeProvider,
   createTheme,
@@ -11,19 +14,21 @@ import {
 import soundSettings from "./variables/soundSettings.jsx";
 import { LoaderGeneral } from "./components/LoaderComponents";
 
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { rootReducer } from "./redux/reducers";
 
-import "./assets/css/main.css";
+// import { createStore } from "redux";
+// import { rootReducer } from "./redux/reducers";
+
 
 // import { store, history } from "./store";
 // import { ConnectedRouter } from "connected-react-router";
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// const store = createStore(
+//   rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
+
+import { store
+ } from "./redux/store.jsx";
 
 export class App extends Component {
   componentWillMount() {

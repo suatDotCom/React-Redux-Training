@@ -21,28 +21,18 @@ export class LoginForm extends Component {
 
     this.state = {
       btnLayer: "primary",
-      btnDisabled: false,
-      loginProgress: false
+      btnDisabled: false
     };
   }
 
-  handleBtnLogin = e => {
-    e.preventDefault();
-    document.querySelectorAll("#scanning")[0].classList.add("scan-effect");
-
-    this.setState({
-      btnLayer: "success",
-      btnDisabled: true,
-      loginProgress: true
-    });
-
-    //global auth state update
-
-    setTimeout(() => {
-      window.location = "/";
-      
-    }, 4000);
-  };
+  componentDidUpdate() {
+    if (this.props.loginProgress && !this.state.btnDisabled) {
+      this.setState({
+        btnLayer: "success",
+        btnDisabled: true
+      });
+    }
+  }
 
   render() {
     return (
@@ -72,6 +62,7 @@ export class LoginForm extends Component {
                   className="form-control text-center"
                   type="text"
                   id="txtUsername"
+                  required
                 />
               </Animated>
             </div>
@@ -93,6 +84,7 @@ export class LoginForm extends Component {
                   className="form-control text-center"
                   type="password"
                   id="txtPassword"
+                  required
                 />
               </Animated>
             </div>
@@ -103,7 +95,7 @@ export class LoginForm extends Component {
               <Button
                 animate
                 layer={this.state.btnLayer}
-                onClick={this.handleBtnLogin}
+                onClick={this.props.handleLogin}
                 disabled={this.state.btnDisabled}
                 style={styles.authButtons}
               >
@@ -118,10 +110,18 @@ export class LoginForm extends Component {
           </div>
 
           <div className="form-group row">
+            <div className="col-12">
+              <div className="error-text d-none">
+              
+              </div>
+            </div>
+          </div>
+
+          <div className="form-group row">
             <div className="col-12 text-center">
               <Loading
                 animate
-                className={!this.state.loginProgress ? "d-none" : ""}
+                className={!this.props.loginProgress ? "d-none" : ""}
               />
             </div>
           </div>
