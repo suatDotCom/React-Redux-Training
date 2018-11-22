@@ -14,22 +14,7 @@ import {
 import soundSettings from "./variables/soundSettings.jsx";
 import { LoaderGeneral } from "./components/LoaderComponents";
 
-
-// import { createStore } from "redux";
-// import { rootReducer } from "./redux/reducers";
-
-
-// import { store, history } from "./store";
-// import { ConnectedRouter } from "connected-react-router";
-
-// const store = createStore(
-//   rootReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
-
-import { store
- } from "./redux/store.jsx";
-
+import { store } from "./redux/store.jsx";
 export class App extends Component {
   componentWillMount() {
     setTimeout(() => {
@@ -43,9 +28,7 @@ export class App extends Component {
         <Provider store={store}>
           <ThemeProvider theme={createTheme()}>
             <SoundsProvider sounds={createSounds(soundSettings)}>
-              {/* <ConnectedRouter history={history}> */}
               <Routes />
-              {/* </ConnectedRouter> */}
             </SoundsProvider>
           </ThemeProvider>
         </Provider>,

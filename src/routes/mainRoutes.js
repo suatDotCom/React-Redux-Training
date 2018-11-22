@@ -15,14 +15,14 @@ import DashboardLayout from "../layouts/DashboardLayout.jsx";
 import { connect } from "react-redux";
 import { authStatus, authStatusUpdate } from "../redux/actions/auth.action.jsx";
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
+const PrivateRoute = ({ component: Component, state, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props =>
         sessionStorage.getItem("authData") &&
-        JSON.parse(sessionStorage.getItem("authData")).isAuth ? (
-          <Component {...props} />
+        JSON.parse(sessionStorage.getItem("authData")).token ? (
+          <Component {...props} {...state.props} />
         ) : (
           <Redirect to="/login" />
         )
@@ -32,6 +32,13 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => {
 };
 
 export class Routes extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      props : this.props
+    }
+  }
   render() {
     return (
       <ConnectedRouter history={history}>
@@ -40,7 +47,7 @@ export class Routes extends Component {
           <PrivateRoute
             path="/"
             component={DashboardLayout}
-            auth={this.props.authStates.isAuthenticated}
+            state={this.state}
             {...this.props}
           />
         </Switch>

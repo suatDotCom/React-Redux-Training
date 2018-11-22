@@ -11,7 +11,7 @@ import arwesBg from "../../assets/img/background.jpg";
 
 import { LoginForm } from "../../components/Login";
 
-import authAPI from '../../API/authAPI.jsx';
+import authAPI from "../../API/authAPI.jsx";
 export class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,30 +20,66 @@ export class Login extends Component {
       loginProgress: false
     };
   }
+
   handleLogin(e) {
     e.preventDefault();
     let errorNode = document.querySelector(".error-text");
-
-    if (this.validInputs()) {
-      document.querySelectorAll("#scanning")[0].classList.add("scan-effect");
-
+    errorNode.innerHTML = "";
+    
+    if (process.env.NODE_ENV == "development") {
       this.setState({
         loginProgress: true
       });
 
-      
-      authAPI.userLogin().then((response) => console.log(response.JSON()))
-      .catch(err => console.error(err))
-      
-      sessionStorage.setItem("authData", JSON.stringify({ isAuth: true }));
-
-      //global auth state update
+      sessionStorage.setItem(
+        "authData",
+        JSON.stringify({ status: true, token: "fakeToken" })
+      );
 
       setTimeout(() => {
         this.props.history.push("/dashboard");
       }, 4000);
 
-      errorNode.classList.add("d-none");
+      return;
+    }
+
+    if (this.validInputs()) {
+      // document.querySelectorAll("#scanning")[0].classList.add("scan-effect");
+
+      this.setState({
+        loginProgress: true
+      });
+
+      let username = document.getElementById("txtUsername").value;
+      let password = document.getElementById("txtPassword").value;
+
+      authAPI
+        .userLogin(username, password)
+        .then(response => response.data)
+        .then(data => {
+          if (data.status && data.token) {
+            sessionStorage.setItem("authData", JSON.stringify(data));
+
+            setTimeout(() => {
+              this.props.history.push("/dashboard");
+            }, 4000);
+
+            errorNode.classList.add("d-none");
+          } else if (data.message) {
+            errorNode.innerHTML = data.message;
+            errorNode.classList.remove("d-none");
+
+            this.setState({ loginProgress: false });
+          }
+        })
+        .catch(err => {
+          setTimeout(() => {
+            errorNode.innerHTML = "Sunucu cevap vermiyor!";
+            errorNode.classList.remove("d-none");
+            console.error("API ERROR: ", err);
+            this.setState({ loginProgress: false });
+          }, 2500);
+        });
     } else {
       errorNode.innerHTML = "Gerekli alanları doldurunuz!";
       errorNode.classList.remove("d-none");
@@ -63,7 +99,8 @@ export class Login extends Component {
   }
 
   componentWillMount() {
-    if (sessionStorage.getItem("authData"))
+    var authData = JSON.parse(sessionStorage.getItem("authData"));
+    if (authData && authData.status && authData.token)
       this.props.history.push("/dashboard");
   }
 

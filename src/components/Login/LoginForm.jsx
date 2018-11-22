@@ -16,28 +16,10 @@ const styles = {
 };
 
 export class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      btnLayer: "primary",
-      btnDisabled: false
-    };
-  }
-
-  componentDidUpdate() {
-    if (this.props.loginProgress && !this.state.btnDisabled) {
-      this.setState({
-        btnLayer: "success",
-        btnDisabled: true
-      });
-    }
-  }
-
   render() {
     return (
       <Frame animate level={3} corners={4} layer="primary" id="loginContainer">
-        <span id="scanning" />
+        <span id="scanning" className={this.props.loginProgress ? "scan-effect" : null} />
         <div style={{ padding: "20px 40px", fontSize: "2rem" }}>
           <h3 style={{ fontFamily: "Rajdhani" }}>
             <Words animate>Giris Ekranı</Words>
@@ -94,9 +76,9 @@ export class LoginForm extends Component {
             <div className="col-5 offset-5">
               <Button
                 animate
-                layer={this.state.btnLayer}
+                layer={this.props.loginProgress ? "success" : "primary"}
                 onClick={this.props.handleLogin}
-                disabled={this.state.btnDisabled}
+                disabled={this.props.loginProgress}
                 style={styles.authButtons}
               >
                 Giris Yap

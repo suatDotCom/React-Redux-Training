@@ -6,9 +6,12 @@ import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 
+// const testMiddleware = (store) => (action) => (next) => {alert("test middleware");}
+
 let middlewares = [
   routerMiddleware(history),
-  ReduxThunk
+  ReduxThunk,
+  // testMiddleware
 ];
 
 // apply the middleware

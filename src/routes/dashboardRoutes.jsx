@@ -10,7 +10,7 @@ const dashboardRoutes = [
   },
   {
     path: "/test",
-    name: "Test",
+    name: "React Table",
     icon: "pe-7s-user",
     component: TestContainer
   },

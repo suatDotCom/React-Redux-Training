@@ -1,7 +1,7 @@
 .custom-sidebar {
 
   opacity: 0.7 ;
-  margin-top: 120px;
+  /* margin-top: 120px; */
   min-width: 450px;
 }
 
@@ -21,7 +21,7 @@
     background-position: top left;
     width: 75%;
     height: 60vh;
-    padding:5rem;
+    padding-top:5rem;
 }
 
 .custom-sidebar .sidebar-footer {

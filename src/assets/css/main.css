@@ -10,7 +10,7 @@ html * {
 }
 
 .main-panel {
-  margin-top:200px;
+  margin-top: 100px;
 }
 
 .shine-effect {
@@ -453,7 +453,7 @@ input[type="password"] {
 }
 
 .error-text {
-  color:red;
+  color: red;
 }
 
 .error-input {
@@ -746,4 +746,24 @@ input[type="password"]:focus {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+/* React Table Custom */
+.ReactTable .rt-thead.-header {
+  border: solid !important;
+  border-color: rgba(121, 178, 180, 1) !important;
+  margin-bottom: 30px !important;
+}
+.ReactTable .rt-tbody {
+  border: solid !important;
+  border-color: rgba(121, 178, 180, 1) !important;
+  padding-top: 10px !important;
+}
+.ReactTable .pagination-bottom {
+  border: solid !important;
+  border-color: rgba(121, 178, 180, 1) !important;
+  margin-top: 30px !important;
+}
+.ReactTable .rt-tr-group:hover {
+  background-color: darkslategrey;
 }

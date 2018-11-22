@@ -5,7 +5,7 @@ let serverBase = axios.create({
 })
 
 export default {
-    userLogin: () => {
-        return serverBase.get("/api/userlogin")
+    userLogin: (username, password) => {
+        return serverBase.post("/users/userlogin", {username, password})
     }
 }
