@@ -5,7 +5,7 @@ import dashboardRoutes from "../routes/dashboardRoutes.jsx";
 import { Arwes, Col, Row, Header, Heading, Loading } from "arwes";
 
 import arwesPattern from "../assets/img/glow.png";
-import arwesBg from "../assets/img/background.jpg";
+import arwesBg from "../assets/img/background-large.jpg";
 
 import { Animated } from "react-animated-css";
 

@@ -3,9 +3,6 @@ import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-const test = (test) => {
-  console.log(test ? test : "null")
-}
 export class TestContainer extends Component {
   render() {
     const data = [{
